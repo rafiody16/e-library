@@ -10,7 +10,7 @@
             @endif
             <!-- end flash message -->
 
-            <button wire:click="$dispatch('openModal', { component: 'books.create' })" class="btn btn-md btn-success rounded shadow-sm border-0 mb-3">ADD NEW POST</button>
+            <flux:modal.trigger name="create-books" class="btn btn-md btn-success rounded shadow-sm border-0 mb-3">ADD NEW POST</flux:modal.trigger>
             <div class="card border-0 rounded shadow-sm">
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -26,7 +26,7 @@
                             @forelse ($books as $b)
                             <tr>
                                 <td class="text-center">
-                                    <img src="{{ asset('/storage/posts/'.$b->photo_book) }}" class="rounded" style="width: 150px">
+                                    <img src="{{ asset('/storage/'.$b->photo_book) }}" class="rounded" style="width: 150px">
                                 </td>
                                 <td>{{ $b->name_book }}</td>
                                 <td>{!! $b->author !!}</td>
@@ -47,4 +47,5 @@
             </div>
         </div>
     </div>
+    @include('livewire.books.create')
 </div>
